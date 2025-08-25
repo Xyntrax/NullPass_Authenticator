@@ -7,4 +7,17 @@ This project provides a simple open source alternative to mobile authenticators,
 - Generate time-based one-time passwords (TOTP)
 - Store multiple accounts securely with AES encryption
 - Simple and lightweight GUI (no bloat)
-- Fully local, no cloud or external services
+- Runs fully locally on your device
+
+## Requirements
+
+- Python 3.9+
+- Dependencies:
+  - [pyotp](https://pypi.org/project/pyotp/)
+  - [cryptography](https://pypi.org/project/cryptography/)
+
+### Install dependencies:
+
+```sh
+pip install pyotp cryptography
+```
