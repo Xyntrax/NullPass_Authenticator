@@ -5,9 +5,9 @@ import os
 import base64
 from cryptography.fernet import Fernet
 
-# Secure key handling helpers
-SECRET_FILE = "secrets.enc"   # encrypted secrets storage
-KEY_FILE = "key.key"          # encryption key storage
+# key handling helpers
+SECRET_FILE = "secrets.enc"
+KEY_FILE = "key.key"
 
 
 def generate_key():
@@ -93,16 +93,16 @@ class TOTPApp:
         self.clear_container()
         self.labels.clear()
 
-        # Title
+        
         title = tk.Label(self.container, text="Verification Codes",
                          fg="white", bg="#1E1E2E", font=("Arial", 16, "bold"))
         title.pack(pady=10)
 
-        # Frame for accounts list
+        
         self.codes_frame = tk.Frame(self.container, bg="#1E1E2E")
         self.codes_frame.pack(fill="both", expand=True, padx=10)
 
-        # Add Account button
+        
         add_btn = tk.Button(self.container, text="➕ Add Account Key", command=self.show_add_account_screen,
                             bg="gray30", fg="white", font=("Arial", 12))
         add_btn.pack(pady=10)
@@ -114,7 +114,7 @@ class TOTPApp:
         """Screen for adding a new TOTP account (inline, no popup)."""
         self.clear_container()
 
-        # Cancel button
+        
         cancel_btn = tk.Button(self.container, text="X", command=self.show_main_screen,
                                bg="red", fg="white", font=("Arial", 10, "bold"))
         cancel_btn.pack(anchor="ne", padx=5, pady=5)
@@ -123,7 +123,7 @@ class TOTPApp:
                        fg="white", bg="#1E1E2E", font=("Arial", 14, "bold"))
         lbl.pack(pady=5)
 
-        # Error label
+        
         error_label = tk.Label(self.container, text="", fg="red", bg="#1E1E2E", font=("Arial", 10))
         error_label.pack(pady=5)
 
@@ -132,21 +132,21 @@ class TOTPApp:
             entry.insert(0, placeholder)
             entry.config(fg="gray")
             if is_secret:
-                entry.config(show="")  # always show placeholder normally
+                entry.config(show="")
 
             def on_focus_in(event):
                 if entry.get() == placeholder:
                     entry.delete(0, tk.END)
                     entry.config(fg="white")
                     if is_secret and eye_btn.cget("text") == "👁️":
-                        entry.config(show="*")  # mask when user types
+                        entry.config(show="*")
 
             def on_focus_out(event):
                 if not entry.get():
                     entry.insert(0, placeholder)
                     entry.config(fg="gray")
                     if is_secret:
-                        entry.config(show="")  # show placeholder unmasked
+                        entry.config(show="")
 
             entry.bind("<FocusIn>", on_focus_in)
             entry.bind("<FocusOut>", on_focus_out)
@@ -157,7 +157,7 @@ class TOTPApp:
         account_entry.pack(pady=2, padx=20, fill="x")
         add_placeholder(account_entry, "Name")
 
-        # Secret key field with eye toggle
+        # Secret key field
         tk.Label(self.container, text="Key", fg="white", bg="#1E1E2E").pack(pady=(10, 2))
         key_frame = tk.Frame(self.container, bg="#1E1E2E")
         key_frame.pack(pady=2, padx=20, fill="x")
