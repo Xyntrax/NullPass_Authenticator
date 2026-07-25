@@ -18,6 +18,6 @@ Built as a fun open source project to explore TOTP and local encryption, not as 
 
 ### Install dependencies:
 
-```sh
+```
 pip install pyotp cryptography
-``
+```
