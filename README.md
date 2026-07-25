@@ -20,4 +20,4 @@ Built as a fun open source project to explore TOTP and local encryption, not as 
 
 ```sh
 pip install pyotp cryptography
-```
+``
